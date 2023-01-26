@@ -1,0 +1,49 @@
+{
+  "name": "rahat-otp",
+  "version": "1.0.0",
+  "description": "Tayaba OTP Service",
+  "main": "./index.js",
+  "scripts": {
+    "start": "nodemon .",
+    "production": "ENV_TYPE=production node .",
+    "setup": "yarn install"
+  },
+  "author": {
+    "email": "team@esatya.io",
+    "name": "Rumsan Team"
+  },
+  "maintainers": [
+    {
+      "email": "team@esatya.io",
+      "name": "Rumsan Team"
+    }
+  ],
+  "license": "TBD",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/esatya/rahat-otp.git"
+  },
+  "dependencies": {
+    "@rumsan/core": "^1.0.601",
+    "axios": "^0.20.0",
+    "config": "^3.3.2",
+    "ethers": "^5.0.14",
+    "google-spreadsheet": "^3.3.0",
+    "moment": "^2.29.4",
+    "mongoose": "^6.6.0",
+    "nodemailer": "^6.7.7",
+    "sequelize": "^6.21.3",
+    "sqlite3": "^5.0.11"
+  },
+  "devDependencies": {
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
+    "merge": "^1.2.1",
+    "prettier": "^2.1.1"
+  }
+}
