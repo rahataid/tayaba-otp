@@ -29,7 +29,7 @@ module.exports = {
     const {
       data: {
         data: {
-          CONTRACT_ADDRESS: { rahatClaim: contractAddress }
+          CONTRACT_ADDRESS: { RahatClaim: contractAddress }
         },
       },
     } = await axios(`${rahatServer}/api/v1/settings`);
@@ -58,7 +58,7 @@ module.exports = {
     const expiryTime = 900;
     const expiryDate = Math.floor(Date.now() / 1000) + expiryTime;
     const otpHash = this.generateHash(otp);
-    return contract.addOtpToClaim(1, otpHash, expiryDate);
+    return contract.addOtpToClaim(claimId, otpHash, expiryDate);
   },
 
   async getOtp(phone, vendor) {
@@ -91,17 +91,14 @@ module.exports = {
 
   async contractListen() {
     currentContract = await this.getContract();
-    const claim = await currentContract.claims(1);
-    console.log({ claim });
-    console.log({ currentContract });
     currentContract.on('ClaimCreated', async (claimId) => {
       try {
         const currentClaim = await currentContract.claims(claimId);
         //TODO get phone number from claimee address
         const otp = await this.getOtp(currentClaim.claimeeAddress);
-        console.log({ claimId })
+        console.log({ claimId: claimId.toNumber(), otp });
         if (!otp) return;
-        await this.addOtpToClaim(currentContract, 1, otp);
+        await this.addOtpToClaim(currentContract, claimId.toNumber(), otp);
         console.log({ claimee: currentClaim.claimeeAddress, otp });
         //TODO send message the claimee phone number
       } catch (e) {
