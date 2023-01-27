@@ -1,9 +1,10 @@
 #! /bin/bash
- 
+  
 while true
 do
+response=$(curl --max-time 15 --write-out %{http_code} --silent --output /dev/null https://tayaba-api.xa.rahat.io/api/v1/settings)
 # ((i++))
-    if curl -If "http://tayaba:4800/api/v1/settings"; then
+    if [ "$response" = "200" ]; then
         echo "rahat server is ready";
         yarn production;
         break;
