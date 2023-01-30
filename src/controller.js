@@ -110,7 +110,7 @@ module.exports = {
     console.log(`Wallet: ${wallet.address}`);
     console.log('> Listening to events...');
     console.log('----------------------------------------');
-    console.log(currentContract.listenerCount('ClaimCreated'), 'listeners');
+    console.log(currentContract.listenerCount('ClaimCreated'), 'listeners at ', Date.now().toUTCString());
   },
 
   async contractStopListen() {
